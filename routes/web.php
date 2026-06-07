@@ -41,14 +41,12 @@ Route::middleware('auth')
         Route::resource('gejala', GejalaController::class);
 
         // Rules
-        Route::get('/rules', [RuleController::class, 'index'])
-            ->name('rules.index');
-
-        Route::post('/rules/store', [RuleController::class, 'store'])
-            ->name('rules.store');
-
-        Route::delete('/rules/{id}', [RuleController::class, 'destroy'])
-            ->name('rules.destroy');
+        Route::get('/rules',                        [RuleController::class, 'index'])             ->name('rules.index');
+        Route::get('/rules/create',                 [RuleController::class, 'create'])            ->name('rules.create');
+        Route::post('/rules/store',                 [RuleController::class, 'store'])             ->name('rules.store');
+        Route::get('/rules/{penyakitId}/edit',      [RuleController::class, 'edit'])              ->name('rules.edit');
+        Route::put('/rules/{penyakitId}',           [RuleController::class, 'update'])            ->name('rules.update');
+        Route::delete('/rules/{penyakitId}/all',    [RuleController::class, 'destroyByPenyakit']) ->name('rules.destroyByPenyakit');
 
         // Riwayat Diagnosa
         Route::get('/riwayat', [RiwayatController::class, 'index'])

@@ -316,7 +316,7 @@
         </p>
 
         <small>
-            © 2026 Pakiro - Forward Chaining Expert System
+            © 2026 Pakiro - 2211072 Muhammad Reza Aunaddin
         </small>
 
     </div>
