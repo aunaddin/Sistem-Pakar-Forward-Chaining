@@ -7,102 +7,65 @@
     <div class="card">
 
         <div class="card-header">
-
-            <h3>Riwayat Diagnosa</h3>
-
+            <h3>Riwayat Diagnosis</h3>
         </div>
 
         <div class="card-body">
 
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            @endif
+
             <table class="table table-bordered table-striped">
 
                 <thead>
-
                     <tr>
-
                         <th>No</th>
-
                         <th>Nama Pasien</th>
-
-                        <th>Alamat</th>
-
-                        <th>Hasil Diagnosa</th>
-
+                        <th>Hasil Diagnosis</th>
                         <th>Tanggal</th>
-
-                        <th width="120">Aksi</th>
-
+                        <th width="150">Aksi</th>
                     </tr>
-
                 </thead>
 
                 <tbody>
 
                     @forelse($riwayat as $item)
-
                     <tr>
-
                         <td>{{ $loop->iteration }}</td>
-
                         <td>{{ $item->nama_pasien }}</td>
-
-                        <td>{{ $item->alamat }}</td>
-
                         <td>
-
                             @if($item->penyakit)
-
                                 {{ $item->penyakit->nama_penyakit }}
-
                             @else
-
-                                <span class="text-danger">
-                                    Tidak ditemukan
-                                </span>
-
+                                <span class="text-danger">Tidak ditemukan</span>
                             @endif
-
                         </td>
-
+                        <td>{{ $item->created_at->format('d-m-Y H:i') }}</td>
                         <td>
-
-                            {{ $item->created_at->format('d-m-Y H:i') }}
-
-                        </td>
-
-                        <td>
+                            <a href="{{ route('riwayat.show', $item->id) }}"
+                               class="btn btn-info btn-sm">
+                                Detail
+                            </a>
 
                             <form action="{{ route('riwayat.destroy', $item->id) }}"
-                                  method="POST">
-
+                                  method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-
                                 <button class="btn btn-danger btn-sm"
                                         onclick="return confirm('Hapus riwayat?')">
-
                                     Hapus
-
                                 </button>
-
                             </form>
-
                         </td>
-
                     </tr>
-
                     @empty
-
                     <tr>
-
-                        <td colspan="6" class="text-center">
-
-                            Belum ada riwayat
-
-                        </td>
-
+                        <td colspan="5" class="text-center">Belum ada riwayat</td>
                     </tr>
-
                     @endforelse
 
                 </tbody>

@@ -49,9 +49,7 @@ Route::middleware('auth')
         Route::delete('/rules/{penyakitId}/all',    [RuleController::class, 'destroyByPenyakit']) ->name('rules.destroyByPenyakit');
 
         // Riwayat Diagnosa
-        Route::get('/riwayat', [RiwayatController::class, 'index'])
-            ->name('riwayat.index');
-
-        Route::delete('/riwayat/{id}', [RiwayatController::class, 'destroy'])
-            ->name('riwayat.destroy');
+        Route::get('/riwayat',          [RiwayatController::class, 'index'])  ->name('riwayat.index');
+        Route::get('/riwayat/{id}',     [RiwayatController::class, 'show'])   ->name('riwayat.show');
+        Route::delete('/riwayat/{id}',  [RiwayatController::class, 'destroy'])->name('riwayat.destroy');
     });

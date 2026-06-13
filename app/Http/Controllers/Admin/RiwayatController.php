@@ -7,7 +7,7 @@ use App\Models\Diagnosa;
 
 class RiwayatController extends Controller
 {
-    public function index()
+   public function index()
     {
         $riwayat = Diagnosa::with('penyakit')
             ->latest()
@@ -16,10 +16,16 @@ class RiwayatController extends Controller
         return view('admin.riwayat.index', compact('riwayat'));
     }
 
+    public function show($id)
+    {
+        $riwayat = Diagnosa::with('penyakit')->findOrFail($id);
+
+        return view('admin.riwayat.show', compact('riwayat'));
+    }
+
     public function destroy($id)
     {
         $riwayat = Diagnosa::findOrFail($id);
-
         $riwayat->delete();
 
         return redirect()

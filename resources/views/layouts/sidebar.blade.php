@@ -67,7 +67,7 @@
                 <li class="nav-item">
                     <a href="{{ route('riwayat.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-history"></i>
-                        <p>Riwayat Diagnosa</p>
+                        <p>Riwayat Diagnosis</p>
                     </a>
                 </li>
 
