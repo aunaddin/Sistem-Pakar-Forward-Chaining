@@ -4,7 +4,7 @@
 
     <meta charset="utf-8">
 
-    <title>Hasil Diagnosa</title>
+    <title>Hasil Diagnosis</title>
 
     <style>
 
@@ -40,7 +40,7 @@
 
     <div class="title">
 
-        <h2>HASIL DIAGNOSA PAKIRO</h2>
+        <h2>HASIL DIAGNOSIS PAKIRO</h2>
 
         <p>Sistem Pakar Penyakit Kopi Robusta</p>
 
@@ -59,7 +59,7 @@
         </tr>
 
         <tr>
-            <td>Tanggal Diagnosa</td>
+            <td>Tanggal Diagnosis</td>
             <td>: {{ $diagnosa->created_at->format('d-m-Y H:i') }}</td>
         </tr>
 

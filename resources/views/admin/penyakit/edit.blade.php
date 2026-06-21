@@ -6,14 +6,11 @@
 
     <div class="card shadow border-0 rounded-4">
 
-        <div class="card-header bg-warning">
-
-            <h4 class="mb-0">
-
-                Edit Penyakit
-
-            </h4>
-
+        <div class="card-header d-flex align-items-center">
+            <a href="{{ route('penyakit.index') }}" class="btn btn-outline-secondary btn-sm me-3">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <h3 class="mb-0">Edit Penyakit</h3>
         </div>
 
         <div class="card-body">
@@ -117,7 +114,7 @@
 
                 </button>
 
-                <a href="/admin/penyakit"
+                <a href="{{ route('penyakit.index') }}"
                    class="btn btn-secondary">
 
                     Kembali

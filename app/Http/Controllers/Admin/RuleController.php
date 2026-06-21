@@ -14,7 +14,7 @@ class RuleController extends Controller
     {
         $rules = Rule::with(['penyakit', 'gejala'])
             ->get()
-            ->sortBy('penyakit.nama_penyakit');
+            ->sortBy('penyakit.kode_penyakit');
 
         // Key by penyakit_id agar mudah ambil id di view
         $groupedRules = $rules->groupBy('penyakit_id');
@@ -24,8 +24,14 @@ class RuleController extends Controller
 
     public function create()
     {
-        $penyakit = Penyakit::orderBy('nama_penyakit')->get();
-        $gejala   = Gejala::orderBy('nama_gejala')->get();
+            // Ambil ID penyakit yang SUDAH punya rule
+        $penyakitSudahAdaRule = Rule::pluck('penyakit_id')->unique();
+
+        // Hanya tampilkan penyakit yang BELUM punya rule
+        $penyakit = Penyakit::whereNotIn('id', $penyakitSudahAdaRule)
+            ->orderBy('kode_penyakit')
+            ->get();
+        $gejala   = Gejala::orderBy('kode_gejala')->get();
 
         return view('admin.rules.create', compact('penyakit', 'gejala'));
     }
@@ -58,7 +64,7 @@ class RuleController extends Controller
     public function edit($penyakitId)
     {
         $penyakit = Penyakit::findOrFail($penyakitId);
-        $gejala   = Gejala::orderBy('nama_gejala')->get();
+        $gejala   = Gejala::orderBy('kode_gejala')->get();
 
         // ID gejala yang sudah dipilih untuk penyakit ini
         $selectedGejalaIds = Rule::where('penyakit_id', $penyakitId)

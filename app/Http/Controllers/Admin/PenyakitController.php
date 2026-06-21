@@ -21,6 +21,12 @@ class PenyakitController extends Controller
         return view('admin.penyakit.create');
     }
 
+    public function show($id)
+    {
+        $penyakit = Penyakit::findOrFail($id);
+
+        return view('admin.penyakit.show', compact('penyakit'));
+    }
     public function store(Request $request)
     {
         $data = $request->validate([

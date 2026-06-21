@@ -6,8 +6,11 @@
 
     <div class="card">
 
-        <div class="card-header">
-            <h3>Tambah Gejala</h3>
+        <div class="card-header d-flex align-items-center">
+            <a href="{{ route('gejala.index') }}" class="btn btn-outline-secondary btn-sm me-3">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <h3 class="mb-0">Tambah Gejala</h3>
         </div>
 
         <div class="card-body">

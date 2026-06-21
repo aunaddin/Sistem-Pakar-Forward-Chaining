@@ -23,10 +23,10 @@
 
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Kode Gejala</th>
+                        <th width="50">No</th>
+                        <th width="100">Kode Gejala</th>
                         <th>Nama Gejala</th>
-                        <th width="200">Aksi</th>
+                        <th width="150">Aksi</th>
                     </tr>
                 </thead>
 

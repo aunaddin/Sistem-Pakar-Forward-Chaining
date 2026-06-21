@@ -21,12 +21,11 @@
 
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Kode</th>
-                        <th>Gambar</th>
+                        <th width="60">No</th>
+                        <th width="100">Kode</th>
+                        <th width="140">Gambar</th>
                         <th>Nama Penyakit</th>
-                        <th>Penanganan</th>
-                        <th>Aksi</th>
+                        <th width="250">Aksi</th>
                     </tr>
                 </thead>
 
@@ -53,14 +52,20 @@
 
                         <td>{{ $item->nama_penyakit }}</td>
 
-                        <td>{{ $item->penanganan }}</td>
-
                         <td>
+                            <!-- DETAIL -->
+                            <a href="{{ route('penyakit.show', $item->id) }}"
+                            class="btn btn-info btn-sm">
+
+                                <i class="fas fa-eye"></i>Detail
+
+                            </a>
+
                             <!-- EDIT -->
                             <a href="{{ route('penyakit.edit', $item->id) }}"
                             class="btn btn-warning btn-sm">
 
-                                <i class="fas fa-edit"></i>
+                                <i class="fas fa-edit"></i> Edit
 
                             </a>
 
@@ -76,7 +81,7 @@
                                         class="btn btn-danger btn-sm"
                                         onclick="return confirm('Yakin ingin menghapus data?')">
 
-                                    <i class="fas fa-trash"></i>
+                                    <i class="fas fa-trash"></i> Hapus
 
                                 </button>
 

@@ -117,7 +117,11 @@
             @endforelse
 
         </div>
-
+        <div class="text-center mt-4">
+            <a href="/penyakit" class="btn btn-coffee">
+                Selengkapnya ->
+            </a>
+        </div>
     </div>
 
 </section>

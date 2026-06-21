@@ -41,19 +41,40 @@
                     @error('gejala_id')
                         <div class="alert alert-danger py-2">{{ $message }}</div>
                     @enderror
-                    <div class="border rounded p-3" style="max-height: 400px; overflow-y: auto;">
-                        @foreach($gejala as $item)
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox"
-                                       name="gejala_id[]"
-                                       value="{{ $item->id }}"
-                                       id="gejala_{{ $item->id }}"
-                                       {{ in_array($item->id, $selectedGejalaIds) ? 'checked' : '' }}>
-                                <label class="form-check-label" for="gejala_{{ $item->id }}">
-                                    {{ $item->nama_gejala }}
-                                </label>
-                            </div>
-                        @endforeach
+                    <div class="border rounded" style="max-height: 400px; overflow-y: auto;">
+                        <table class="table table-sm mb-0">
+                            <thead class="table-light" style="position: sticky; top: 0;">
+                                <tr>
+                                    <th width="40">Checklist</th>
+                                    <th width="100">Kode</th>
+                                    <th>Gejala</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($gejala as $item)
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox"
+                                                name="gejala_id[]"
+                                                value="{{ $item->id }}"
+                                                id="gejala_{{ $item->id }}"
+                                                style="width: 16px; height: 16px;"
+                                                {{ in_array($item->id, $selectedGejalaIds) ? 'checked' : '' }}>
+                                        </td>
+                                        <td>
+                                            <label class="form-check-label" for="gejala_{{ $item->id }}">
+                                                {{ $item->kode_gejala }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label class="form-check-label" for="gejala_{{ $item->id }}">
+                                                {{ $item->nama_gejala }}
+                                            </label>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
