@@ -24,6 +24,11 @@
             </p>
 
         </div>
+        @if (session('error'))
+            <div class="alert alert-danger text-center mb-4">
+                <i class="fas fa-exclamation-circle me-1"></i> {{ session('error') }}
+            </div>
+        @endif
 
         <form action="{{ route('deteksi.proses') }}"
               method="POST">
@@ -134,9 +139,11 @@
 
                     </div>
 
-                    <div class="text-center mt-4">
+                   <div class="text-center mt-4">
 
-                        <button class="btn btn-coffee btn-lg px-5">
+                        <button class="btn btn-coffee btn-lg px-5"
+                                id="btnProses"
+                                type="submit">
 
                             <i class="fas fa-stethoscope"></i>
 
@@ -201,4 +208,11 @@
 
 </style>
 
+<script>
+    document.querySelector('form').addEventListener('submit', function() {
+        const btn = document.getElementById('btnProses');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
+    });
+</script>
 @endsection

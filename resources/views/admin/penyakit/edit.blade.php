@@ -14,6 +14,21 @@
         </div>
 
         <div class="card-body">
+            {{-- ERROR --}}
+            @if ($errors->any())
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="fas fa-exclamation-circle me-1"></i> {{ $errors->first() }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            @endif
+
+            {{-- SUCCESS --}}
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <i class="fas fa-check-circle me-1"></i> {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            @endif
 
             <form action="{{ route('penyakit.update', $penyakit->id) }}"
                   method="POST"
@@ -113,13 +128,6 @@
                     Update
 
                 </button>
-
-                <a href="{{ route('penyakit.index') }}"
-                   class="btn btn-secondary">
-
-                    Kembali
-
-                </a>
 
             </form>
 

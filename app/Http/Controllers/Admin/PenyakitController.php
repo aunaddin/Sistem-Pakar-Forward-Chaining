@@ -62,25 +62,22 @@ class PenyakitController extends Controller
         $penyakit = Penyakit::findOrFail($id);
 
         $request->validate([
-            'kode_penyakit' => 'required',
+            'kode_penyakit' => 'required|unique:penyakit,kode_penyakit,' . $id,
             'nama_penyakit' => 'required',
-            'deskripsi' => 'required',
-            'penanganan' => 'required',
+            'deskripsi'     => 'required',
+            'penanganan'    => 'required',
         ]);
 
         $data = [
             'kode_penyakit' => $request->kode_penyakit,
             'nama_penyakit' => $request->nama_penyakit,
-            'deskripsi' => $request->deskripsi,
-            'penanganan' => $request->penanganan,
+            'deskripsi'     => $request->deskripsi,
+            'penanganan'    => $request->penanganan,
         ];
 
         if ($request->hasFile('gambar')) {
-
-            $gambar = $request->file('gambar')
-                            ->store('penyakit', 'public');
-
-            $data['gambar'] = $gambar;
+            $data['gambar'] = $request->file('gambar')
+                                ->store('penyakit', 'public');
         }
 
         $penyakit->update($data);

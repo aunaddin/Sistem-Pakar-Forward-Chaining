@@ -233,6 +233,17 @@
                        required>
 
             </div>
+            <!-- LUPA PASSWORD -->
+            <div class="text-end mb-3">
+
+                <a href="{{ route('password.request') }}"
+                style="color: #0d2a7a; font-size: 14px;">
+
+                    Lupa Password?
+
+                </a>
+
+            </div>
 
             <!-- BUTTON -->
             <div class="d-grid gap-2">

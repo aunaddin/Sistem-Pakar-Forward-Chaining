@@ -202,10 +202,12 @@
             }
 
             .hero-image{
-                margin-top: 40px;
+                margin-top: 0px;
+                margin-bottom: 40px;
             }
-
-        }
+            .hero-image-col{
+                order: -1;
+            }
 
     </style>
 

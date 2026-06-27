@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\RuleController;
 use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\Admin\RiwayatController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 Route::get('/', [PublicController::class, 'home']);
 
@@ -17,7 +19,7 @@ Route::get('/deteksi', [DiagnosaController::class, 'index'])
     ->name('deteksi');
 
 Route::post('/deteksi/proses', [DiagnosaController::class, 'proses'])
-    ->name('deteksi.proses'); Auth::routes();
+    ->name('deteksi.proses');
 
 Route::get('/deteksi/pdf/{id}', [DiagnosaController::class, 'pdf'])
     ->name('deteksi.pdf');
@@ -25,6 +27,17 @@ Route::get('/deteksi/pdf/{id}', [DiagnosaController::class, 'pdf'])
 Route::get('/penyakit', [PublicController::class, 'penyakit']);
 
 Route::get('/penyakit/{id}', [PublicController::class, 'detailPenyakit']);
+
+// Login
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Lupa Password
+Route::get('/lupa-password', [ForgotPasswordController::class, 'showForm'])->name('password.request');
+Route::post('/lupa-password', [ForgotPasswordController::class, 'sendLink'])->name('password.email');
+Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('/reset-password', [ForgotPasswordController::class, 'reset'])->name('password.update');
 
 Route::get('/dashboard', [HomeController::class, 'index'])
     ->middleware('auth')

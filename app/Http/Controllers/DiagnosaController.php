@@ -24,6 +24,16 @@ class DiagnosaController extends Controller
             'alamat' => 'required',
             'gejala' => 'required|array',
         ]);
+        
+        // Cegah double submit
+        $duplicate = Diagnosa::where('nama_pasien', $request->nama_pasien)
+            ->where('alamat', $request->alamat)
+            ->where('created_at', '>=', now()->subSeconds(10))
+            ->exists();
+
+        if ($duplicate) {
+            return back()->withInput()->with('error', 'Harap tunggu sebelum mengirim ulang.');
+        }
 
         $gejalaDipilih = $request->gejala;
 

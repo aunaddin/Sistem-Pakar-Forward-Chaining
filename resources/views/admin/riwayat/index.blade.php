@@ -24,7 +24,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama Pasien</th>
+                        <th>Nama Pengguna</th>
                         <th>Hasil Diagnosis</th>
                         <th>Tanggal</th>
                         <th width="150">Aksi</th>

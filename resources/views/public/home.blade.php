@@ -10,7 +10,7 @@
         <div class="row align-items-center">
 
             <!-- TEXT -->
-            <div class="col-lg-6">
+            <div class="col-lg-6 hero-text-col">
 
                 <h1 class="hero-title">
 
@@ -40,7 +40,7 @@
             </div>
 
             <!-- IMAGE -->
-            <div class="col-lg-6 text-center">
+            <div class="col-lg-6 text-center hero-image-col">
 
                 <img src="{{ asset('images/kopi.jpeg') }}"
                      class="hero-image img-fluid"
