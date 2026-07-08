@@ -17,7 +17,8 @@ class GejalaController extends Controller
 
     public function create()
     {
-        return view('admin.gejala.create');
+        $lastGejala = Gejala::orderBy('kode_gejala', 'desc')->first();
+        return view('admin.gejala.create', compact('lastGejala'));
     }
 
     public function store(Request $request)

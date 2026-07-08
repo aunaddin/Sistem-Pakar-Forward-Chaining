@@ -81,14 +81,12 @@
         @endif
         
         <h4>Deskripsi</h4>
-        <p>
-            {{ $diagnosa->penyakit->deskripsi }}
-        </p>
+        <p>{!! nl2br(trim($diagnosa->penyakit->deskripsi)) !!}</p>
 
         <h4>Penanganan</h4>
 
         <p>
-            {{ $diagnosa->penyakit->penanganan }}
+            {!! nl2br(trim($diagnosa->penyakit->penanganan)) !!}
         </p>
 
     @else

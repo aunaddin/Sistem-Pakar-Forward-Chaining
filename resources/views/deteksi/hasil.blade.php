@@ -59,11 +59,7 @@
                         <!-- DESKRIPSI -->
                         <h5>Deskripsi</h5>
 
-                        <p class="text-muted">
-
-                            {{ $hasilPenyakit->deskripsi ?? '-' }}
-
-                        </p>
+                        <p class="text-muted" style="white-space: pre-wrap;">{{ $hasilPenyakit->deskripsi ?? '-' }}</p>
 
                         <hr>
 
@@ -128,11 +124,7 @@
 
                         </h5>
 
-                        <p class="text-muted">
-
-                            {{ $hasilPenyakit->penanganan ?? '-' }}
-
-                        </p>
+                        <p class="text-muted" style="white-space: pre-wrap;">{{ $hasilPenyakit->penanganan ?? '-' }}</p>
 
                         <!-- BUTTON -->
                         <div class="text-center mt-4">

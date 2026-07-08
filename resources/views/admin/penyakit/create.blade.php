@@ -21,6 +21,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
             @endif
+            <p class="text-muted mb-3">
+                <span class="text-danger">*</span> = Wajib diisi
+            </p>
+
 
             <form action="{{ route('penyakit.store') }}"
                   method="POST"
@@ -29,16 +33,26 @@
                 @csrf
 
                 <div class="mb-3">
-                    <label>Kode Penyakit</label>
+                    <label>Kode Penyakit <span class="text-danger">*</span></label>
 
                     <input type="text"
-                           name="kode_penyakit"
-                           class="form-control"
-                           required>
+                        name="kode_penyakit"
+                        class="form-control"
+                        required>
+
+                    @if ($lastPenyakit)
+                        <small class="form-text text-muted">
+                            Kode terakhir digunakan: <strong>{{ $lastPenyakit->kode_penyakit }}</strong>
+                        </small>
+                    @else
+                        <small class="form-text text-muted">
+                            Belum ada kode penyakit yang tersimpan.
+                        </small>
+                    @endif
                 </div>
 
                 <div class="mb-3">
-                    <label>Nama Penyakit</label>
+                    <label>Nama Penyakit <span class="text-danger">*</span></label>
 
                     <input type="text"
                            name="nama_penyakit"
@@ -47,32 +61,41 @@
                 </div>
 
                 <div class="mb-3">
-                    <label>Deskripsi</label>
+                    <label>Deskripsi <span class="text-danger">*</span></label>
 
                     <textarea name="deskripsi"
                               class="form-control"
-                              rows="5"></textarea>
+                              rows="5"
+                              required></textarea>
                 </div>
 
                 <div class="mb-3">
 
-                    <label>Penanganan</label>
+                    <label>Penanganan <span class="text-danger">*</span></label>
 
                     <textarea name="penanganan"
                             class="form-control"
-                            rows="5"></textarea>
+                            rows="5"
+                            required></textarea>
 
                 </div>
                 
                 <div class="mb-3">
-                    <label>Gambar</label>
+                    <label>Gambar <span class="text-danger">*</span></label>
 
                     <input type="file"
-                           name="gambar"
-                           class="form-control">
+                        name="gambar"
+                        class="form-control"
+                        accept="image/*"
+                        required>
+
+                    <small class="form-text text-muted">
+                        Format: JPG, PNG. Maksimal ukuran file 2MB.
+                    </small>
                 </div>
 
-                <button class="btn btn-primary">
+                <button class="btn btn-primary"
+                 onclick=" return confirm( 'Yakin ingin menambahkan data ini?')">
                     Simpan
                 </button>
 

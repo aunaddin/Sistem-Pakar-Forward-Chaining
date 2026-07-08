@@ -43,11 +43,7 @@
                 <!-- DESKRIPSI -->
                 <h5>Deskripsi</h5>
 
-                <p class="text-muted">
-
-                    {{ $penyakit->deskripsi }}
-
-                </p>
+                <p class="text-muted" style="white-space: pre-wrap;">{{ trim($penyakit->deskripsi) }}</p>
 
                 <hr>
 
@@ -79,11 +75,7 @@
                 <!-- PENANGANAN -->
                 <h5>Penanganan</h5>
 
-                <p class="text-muted">
-
-                    {{ $penyakit->penanganan }}
-
-                </p>
+                <p class="text-muted" style="white-space: pre-wrap;">{{ trim($penyakit->penanganan) }}</p>
 
                 <!-- BUTTON -->
                 <div class="text-center mt-4">

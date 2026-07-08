@@ -44,7 +44,7 @@
                             @endif
 
                             <td>
-                                <span class="text-muted me-1">{{ $i + 1 }}.</span>
+                                <span class="badge bg-secondary me-1">{{ $item->gejala->kode_gejala }}</span>
                                 {{ $item->gejala->nama_gejala }}
                             </td>
 

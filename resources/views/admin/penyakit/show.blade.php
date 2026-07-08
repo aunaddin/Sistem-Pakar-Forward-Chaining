@@ -25,10 +25,10 @@
             @endif
 
             <h6 class="fw-semibold">Deskripsi</h6>
-            <p>{{ $penyakit->deskripsi ?: '-' }}</p>
+            <p style="white-space: pre-wrap;">{{ $penyakit->deskripsi ?: '-' }}</p>
 
             <h6 class="fw-semibold">Solusi / Penanganan</h6>
-            <p>{{ $penyakit->penanganan ?: '-' }}</p>
+            <p style="white-space: pre-wrap;">{{ $penyakit->penanganan ?: '-' }}</p>
 
         </div>
 

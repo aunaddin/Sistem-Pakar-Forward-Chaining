@@ -30,6 +30,10 @@
                 </div>
             @endif
 
+            <p class="text-muted mb-3">
+                <span class="text-danger">*</span> = Wajib diisi
+            </p>
+
             <form action="{{ route('penyakit.update', $penyakit->id) }}"
                   method="POST"
                   enctype="multipart/form-data">
@@ -40,7 +44,7 @@
                 <!-- KODE -->
                 <div class="mb-3">
 
-                    <label>Kode Penyakit</label>
+                    <label>Kode Penyakit <span class="text-danger">*</span></label>
 
                     <input type="text"
                            name="kode_penyakit"
@@ -53,7 +57,7 @@
                 <!-- NAMA -->
                 <div class="mb-3">
 
-                    <label>Nama Penyakit</label>
+                    <label>Nama Penyakit <span class="text-danger">*</span></label>
 
                     <input type="text"
                            name="nama_penyakit"
@@ -66,7 +70,7 @@
                 <!-- DESKRIPSI -->
                 <div class="mb-3">
 
-                    <label>Deskripsi</label>
+                    <label>Deskripsi <span class="text-danger">*</span></label>
 
                     <textarea name="deskripsi"
                               rows="5"
@@ -78,7 +82,7 @@
                 <!-- PENANGANAN -->
                 <div class="mb-3">
 
-                    <label>Penanganan</label>
+                    <label>Penanganan <span class="text-danger">*</span></label>
 
                     <textarea name="penanganan"
                               rows="5"
@@ -114,14 +118,19 @@
                     <label>Upload Gambar Baru</label>
 
                     <input type="file"
-                           name="gambar"
-                           class="form-control">
+                        name="gambar"
+                        class="form-control"
+                        accept="image/*">
+
+                    <small class="form-text text-muted">
+                        Format: JPG, PNG. Maksimal ukuran file 2MB. Kosongkan jika tidak ingin mengganti gambar.
+                    </small>
 
                 </div>
-
                 <!-- BUTTON -->
                 <button type="submit"
-                        class="btn btn-warning">
+                        class="btn btn-warning"
+                        onclick="return confirm('Yakin ingin menyimpan perubahan data ini?')">
 
                     <i class="fas fa-save"></i>
 

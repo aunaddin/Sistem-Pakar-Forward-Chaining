@@ -22,6 +22,10 @@
                 </div>
             @endif
 
+            <p class="text-muted mb-3">
+                <span class="text-danger">*</span> = Wajib diisi
+            </p>
+
             <form action="{{ route('gejala.store') }}"
                   method="POST">
 
@@ -29,18 +33,28 @@
 
                 <div class="mb-3">
 
-                    <label>Kode Gejala</label>
+                    <label>Kode Gejala <span class="text-danger">*</span></label>
 
                     <input type="text"
-                           name="kode_gejala"
-                           class="form-control"
-                           required>
+                        name="kode_gejala"
+                        class="form-control"
+                        required>
+
+                    @if ($lastGejala)
+                        <small class="form-text text-muted">
+                            Kode terakhir digunakan: <strong>{{ $lastGejala->kode_gejala }}</strong>
+                        </small>
+                    @else
+                        <small class="form-text text-muted">
+                            Belum ada kode gejala yang tersimpan.
+                        </small>
+                    @endif
 
                 </div>
 
                 <div class="mb-3">
 
-                    <label>Nama Gejala</label>
+                    <label>Nama Gejala <span class="text-danger">*</span></label>
 
                     <input type="text"
                            name="nama_gejala"
@@ -49,7 +63,8 @@
 
                 </div>
 
-                <button class="btn btn-primary">
+                <button class="btn btn-primary"
+                    onclick="return confirm('Yakin ingin menambahkan data ini?')">
                     Simpan
                 </button>
 

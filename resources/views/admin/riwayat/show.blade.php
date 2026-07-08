@@ -47,7 +47,7 @@
                 @endif
 
                 <h6 class="fw-semibold">Deskripsi</h6>
-                <p>{{ $riwayat->penyakit->deskripsi }}</p>
+                <p stl>{{ $riwayat->penyakit->deskripsi }}</p>
 
                 <h6 class="fw-semibold">Penanganan</h6>
                 <p>{{ $riwayat->penyakit->penanganan }}</p>

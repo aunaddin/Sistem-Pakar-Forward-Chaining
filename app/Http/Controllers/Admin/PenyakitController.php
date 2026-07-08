@@ -18,7 +18,8 @@ class PenyakitController extends Controller
 
     public function create()
     {
-        return view('admin.penyakit.create');
+        $lastPenyakit = Penyakit::orderBy('kode_penyakit', 'desc')->first();
+        return view('admin.penyakit.create',compact('lastPenyakit'));
     }
 
     public function show($id)
@@ -32,9 +33,9 @@ class PenyakitController extends Controller
         $data = $request->validate([
             'kode_penyakit' => 'required|unique:penyakit',
             'nama_penyakit' => 'required',
-            'deskripsi' => 'nullable',
-            'penanganan' => 'nullable',
-            'gambar' => 'nullable|image',
+            'deskripsi' => 'required',
+            'penanganan' => 'required',
+            'gambar' => 'required|image|max:2048',
         ]);
 
         if ($request->hasFile('gambar')) {
@@ -66,6 +67,7 @@ class PenyakitController extends Controller
             'nama_penyakit' => 'required',
             'deskripsi'     => 'required',
             'penanganan'    => 'required',
+            'gambar'        => 'nullable|image|max:2048',
         ]);
 
         $data = [

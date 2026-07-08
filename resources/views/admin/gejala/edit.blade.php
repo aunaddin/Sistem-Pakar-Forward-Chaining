@@ -29,6 +29,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
             @endif
+            <p class="text-muted mb-3">
+                <span class="text-danger">*</span> = Wajib diisi
+            </p>
+
 
             <form action="{{ route('gejala.update', $gejala->id) }}"
                   method="POST">
@@ -38,7 +42,7 @@
 
                 <div class="mb-3">
 
-                    <label>Kode Gejala</label>
+                    <label>Kode Gejala <span class="text-danger">*</span></label>
 
                     <input type="text"
                            name="kode_gejala"
@@ -50,7 +54,7 @@
 
                 <div class="mb-3">
 
-                    <label>Nama Gejala</label>
+                    <label>Nama Gejala <span class="text-danger">*</span></label>
 
                     <input type="text"
                            name="nama_gejala"
@@ -60,7 +64,8 @@
 
                 </div>
 
-                <button class="btn btn-primary">
+                <button class="btn btn-primary"
+                    onclick="return confirm('Yakin ingin menyimpan perubahan data ini?')">
                     Update
                 </button>
 
